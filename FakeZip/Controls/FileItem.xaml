@@ -1,0 +1,110 @@
+﻿<UserControl x:Class="FakeZip.Controls.FileItem"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:FakeZip.Controls"
+             mc:Ignorable="d" 
+             d:DesignHeight="100" d:DesignWidth="300"
+             Width="300"
+             Height="100"
+             Background="White">
+    <UserControl.Resources>
+        <PathGeometry 
+            x:Key="FileIcon"
+            Figures="
+                M17.222,5.041l-4.443-4.414c-0.152-0.151-0.356-0.235-0.571-0.235h-8.86c-0.444,0-0.807,0.361-0.807,0.808v17.602c0,0.448,0.363,0.808,0.807,0.808h13.303c0.448,0,0.808-0.36,0.808-0.808V5.615C17.459,5.399,17.373,5.192,17.222,5.041zM15.843,17.993H4.157V2.007h7.72l3.966,3.942V17.993z
+                M5.112,7.3c0,0.446,0.363,0.808,0.808,0.808h8.077c0.445,0,0.808-0.361,0.808-0.808c0-0.447-0.363-0.808-0.808-0.808H5.92C5.475,6.492,5.112,6.853,5.112,7.3z
+                M5.92,5.331h4.342c0.445,0,0.808-0.361,0.808-0.808c0-0.446-0.363-0.808-0.808-0.808H5.92c-0.444,0-0.808,0.361-0.808,0.808C5.112,4.97,5.475,5.331,5.92,5.331z
+                M13.997,9.218H5.92c-0.444,0-0.808,0.361-0.808,0.808c0,0.446,0.363,0.808,0.808,0.808h8.077c0.445,0,0.808-0.361,0.808-0.808C14.805,9.58,14.442,9.218,13.997,9.218z
+                M13.997,11.944H5.92c-0.444,0-0.808,0.361-0.808,0.808c0,0.446,0.363,0.808,0.808,0.808h8.077c0.445,0,0.808-0.361,0.808-0.808C14.805,12.306,14.442,11.944,13.997,11.944z
+                M13.997,14.67H5.92c-0.444,0-0.808,0.361-0.808,0.808c0,0.447,0.363,0.808,0.808,0.808h8.077c0.445,0,0.808-0.361,0.808-0.808C14.805,15.032,14.442,14.67,13.997,14.67z
+            "
+        />
+        <PathGeometry
+            x:Key="CloseIcon"
+            Figures="M11.469,10l7.08-7.08c0.406-0.406,0.406-1.064,0-1.469c-0.406-0.406-1.063-0.406-1.469,0L10,8.53l-7.081-7.08
+							c-0.406-0.406-1.064-0.406-1.469,0c-0.406,0.406-0.406,1.063,0,1.469L8.531,10L1.45,17.081c-0.406,0.406-0.406,1.064,0,1.469
+							c0.203,0.203,0.469,0.304,0.735,0.304c0.266,0,0.531-0.101,0.735-0.304L10,11.469l7.08,7.081c0.203,0.203,0.469,0.304,0.735,0.304
+							c0.267,0,0.532-0.101,0.735-0.304c0.406-0.406,0.406-1.064,0-1.469L11.469,10z"
+        />
+    </UserControl.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="14"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        
+        <Button 
+            Grid.Row="0" 
+            HorizontalAlignment="Right"
+            Background="Transparent"
+            BorderThickness="0"
+            Margin="2">
+            <Path 
+                Data="{StaticResource CloseIcon}"
+                Fill="CornflowerBlue"
+                Stretch="Uniform"
+            />
+        </Button>
+        
+        <Grid 
+            Grid.Row="1" 
+            Margin="10 0 10 0">
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Path 
+                Data="{StaticResource FileIcon}"
+                Fill="CornflowerBlue"
+                Stretch="Uniform"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+            />
+
+            <Grid 
+                Grid.Column="1" 
+                Margin="10 0 0 0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <TextBlock
+                    Grid.Row="0"
+                    Text="{Binding FileName, ElementName=this, 
+                    FallbackValue=FileName, TargetNullValue=FileName}"
+                    TextTrimming="CharacterEllipsis"
+                    FontWeight="Bold"
+                />
+
+                <TextBlock 
+                    Grid.Row="1"
+                    Text="Size:"
+                    TextTrimming="CharacterEllipsis"
+                    FontWeight="Bold"
+                />
+
+                <TextBlock 
+                    Grid.Row="2"
+                    Text="Status:"
+                    TextTrimming="CharacterEllipsis"
+                    FontWeight="Bold"
+                />
+
+                <ProgressBar 
+                    Grid.Row="3"
+                    Height="10"
+                    Foreground="CadetBlue"
+                    VerticalAlignment="Top"
+                />
+            </Grid>
+        </Grid>
+    </Grid>
+</UserControl>

@@ -1,0 +1,56 @@
+﻿<Window x:Class="FakeZip.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:FakeZip.Controls"
+        mc:Ignorable="d"
+        Title="FakeZip" Height="480" Width="640"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
+    <Grid Width="600">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80" />
+            <RowDefinition />
+        </Grid.RowDefinitions>
+
+        <TextBlock 
+            Text="FakeZip"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FontSize="30"
+        />
+
+        <Separator
+            Grid.Row="0" 
+            VerticalAlignment="Bottom"
+        />
+
+        <Grid 
+            Row="1" 
+            Margin="0 20 0 0" 
+            VerticalAlignment="Top"
+            Height="300">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+
+            <controls:DropZone Width="250" />
+
+            <ScrollViewer 
+                Grid.Column="1"
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Hidden"
+                Margin="0.50">
+                <Grid>
+                    <ItemsControl>
+                        <TextBlock 
+                            Text="Selected files" 
+                        />
+                    </ItemsControl>
+                </Grid>
+            </ScrollViewer>
+        </Grid>
+    </Grid>
+</Window>
